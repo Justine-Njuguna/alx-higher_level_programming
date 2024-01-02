@@ -1,26 +1,24 @@
 #!/usr/bin/python3
 
-def uppercase(s):
+def uppercase(input_str):
     """
-    Prints a string in uppercase followed by a new line.
+    Convert a string to uppercase.
 
     Args:
-    - s: input string
+    - input_str: the input string
 
     Returns:
-    - None
+    - The input string converted to uppercase
     """
-    for char in s:
-        # Check if the character is a lowercase letter
-        if ord('a') <= ord(char) <= ord('z'):
-            # Convert to uppercase using ASCII values
-            char = chr(ord(char) - ord('a') + ord('A'))
-        print(char, end="")
+    result = ""
+    for char in input_str:
+        if 'a' <= char <= 'z':
+            result += chr(ord(char) - ord('a') + ord('A'))
+        else:
+            result += char
 
-    # Use a single print function with string format to print a new line
-    print("\n", end="")
+    print(result, end='\n')
 
 
 if __name__ == "__main__":
-    uppercase("best")  # Output: BEST
-    uppercase("Best School 98 Battery street")
+    uppercase("Hello, World!")
