@@ -16,7 +16,9 @@ def uppercase(s):
             # Convert to uppercase using ASCII values
             char = chr(ord(char) - ord('a') + ord('A'))
         print(char, end="")
-    print()  # Print a new line
+
+    # Use a single print function with string format to print a new line
+    print("\n", end="")
 
 
 if __name__ == "__main__":
