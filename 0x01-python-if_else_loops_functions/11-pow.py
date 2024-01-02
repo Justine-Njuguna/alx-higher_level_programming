@@ -21,7 +21,7 @@ def pow(a, b):
         result *= a
 
     # Round the result to 10 decimal places
-    return round(result, 10)
+    return round(result, 10) if result != 0 else 0.0
 
 
 if __name__ == "__main__":
