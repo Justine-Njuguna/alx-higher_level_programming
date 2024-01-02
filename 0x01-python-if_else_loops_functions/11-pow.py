@@ -20,14 +20,15 @@ def pow(a, b):
     for _ in range(b):
         result *= a
 
-    return result  # Return the unrounded result
+    # Round the result to 10 decimal places
+    return round(result, 10) if result != 0 else 0.0
 
 
 if __name__ == "__main__":
-    print(round(pow(2, 2), 10))  # Round after calculation
-    print(round(pow(98, 2), 10))
+    print(pow(2, 2))
+    print(pow(98, 2))
     print(pow(98, 0))
-    print(round(pow(100, -2), 10))
+    print(pow(100, -2))
     print(pow(-4, 5))
-    print(round(pow(10, -2), 10))
-    print(round(pow(-98, -10), 10))  # Correct output: 1.223881142011411e-20
+    print(pow(10, -2))
+    print(pow(-98, -10))
