@@ -2,9 +2,8 @@
 
 class Square:
     """
-    Represents a square.
+    This is the Square class.
 
-    This class can be used to create and manipulate square objects.
+    The Square class is defined to represent a square object.
     """
     pass
-
