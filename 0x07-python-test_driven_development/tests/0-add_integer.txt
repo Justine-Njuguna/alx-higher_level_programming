@@ -1,0 +1,40 @@
+# File: tests/0-add_integer.txt
+
+>>> add_integer = __import__('0-add_integer').add_integer
+
+# Test adding two integers
+>>> add_integer(3, 5)
+8
+
+# Test adding an integer and a float
+>>> add_integer(3, 2.7)
+5
+
+# Test adding two floats
+>>> add_integer(1.5, 2.5)
+3
+
+# Test adding with the default value of b
+>>> add_integer(7)
+105
+
+# Test adding two negative integers
+>>> add_integer(-5, -3)
+-8
+
+# Test adding with b as a float
+>>> add_integer(10, 5.5)
+15
+
+# Test adding with b as a string (should raise TypeError)
+>>> add_integer(10, "5")
+Traceback (most recent call last):
+    ...
+TypeError: b must be an integer or a float
+
+# Test adding with a as a string (should raise TypeError)
+>>> add_integer("10", 5)
+Traceback (most recent call last):
+    ...
+TypeError: a must be an integer or a float
+
