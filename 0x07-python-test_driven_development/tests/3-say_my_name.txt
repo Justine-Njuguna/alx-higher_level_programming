@@ -1,0 +1,29 @@
+# File: tests/3-say_my_name.txt
+
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+# Test with both first name and last name
+>>> say_my_name("John", "Doe")
+My name is John Doe
+
+# Test with only first name
+>>> say_my_name("Alice")
+My name is Alice
+
+# Test with non-string first name (should raise TypeError)
+>>> say_my_name(123, "Smith")
+Traceback (most recent call last):
+	...
+TypeError: first_name must be a string
+
+# Test with non-string first name (should raise TypeError)
+>>> say_my_name(123, "Smith")
+Traceback (most recent call last):
+	...
+TypeError: first_name must be a string
+
+# Test with both non-string first name and last name (should raise TypeError)
+>>> say_my_name(123, 456)
+Traceback (most recent call last):
+	...
+TypeError: first_name must be a string
