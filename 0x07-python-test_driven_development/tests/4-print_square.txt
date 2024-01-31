@@ -1,0 +1,39 @@
+# File: tests/4-print_square.txt
+
+>>> print_square = __import__('4-print_square').print_square
+
+# Test printing a square of size 5
+>>> print_square(5)
+#####
+#####
+#####
+#####
+#####
+
+# Test printing a square of size 1
+>>> print_square(1)
+#
+
+# Test printing a square of size 0 (should raise ValueError)
+>>> print_square(0)
+Traceback (most recent call last):
+    ...
+ValueError: size must be >= 0
+
+# Test printing a square of negative size (should raise ValueError)
+>>> print_square(-3)
+Traceback (most recent call last):
+    ...
+ValueError: size must be >= 0
+
+# Test printing a square of non-integer size (should raise TypeError)
+>>> print_square(3.5)
+Traceback (most recent call last):
+    ...
+TypeError: size must be an integer
+
+# Test printing a square of negative float size (should raise TypeError)
+>>> print_square(-2.5)
+Traceback (most recent call last):
+    ...
+TypeError: size must be an integer
