@@ -1,0 +1,20 @@
+# File: tests/5-text_indentation.txt
+
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+# Test with a simple text
+>>> text_indentation("This is a simple text. Another sentence? Yes, indeed: a third one.")
+This is a simple text
+Another sentence
+Yes, indeed
+a third one
+
+# Test with a text containing spaces around punctuation
+>>> text_indentation("   First sentence.   Second sentence?   Third one:   Fourth.")
+First sentence
+Second sentence
+Third one
+Fourth
+
+# Test with an empty string (should not print anything)
+>>> text_indentation("")
