@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Base class Geometry - Raising exceptions"""
 
 
 class BaseGeometry:

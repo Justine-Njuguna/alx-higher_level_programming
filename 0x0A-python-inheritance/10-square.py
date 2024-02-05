@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Final task on BaseGeometry"""
 
 
 class BaseGeometry:

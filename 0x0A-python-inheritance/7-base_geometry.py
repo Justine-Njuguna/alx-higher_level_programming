@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Class that has more defs in it"""
 
 
 class BaseGeometry:

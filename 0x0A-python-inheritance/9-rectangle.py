@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Base class, adding more values to the derived class"""
 
 
 class BaseGeometry:

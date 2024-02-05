@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Base class that has a derived class"""
 
 
 class BaseGeometry:

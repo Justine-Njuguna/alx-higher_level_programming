@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Are you a class or inherited instance"""
 
 
 def inherits_from(obj, a_class):
