@@ -1,0 +1,30 @@
+"""
+>>> bg_module = __import__('7-base_geometry')
+>>> BaseGeometry = bg_module.BaseGeometry
+
+>>> # Test 1: Test area method (raises Exception)
+>>> base_geometry_instance = BaseGeometry()
+>>> try:
+...     base_geometry_instance.area()
+... except Exception as e:
+...     str(e)
+'area() is not implemented'
+
+>>> # Test 2: Test integer_validator method with valid values
+>>> base_geometry_instance.integer_validator("side_length", 5)
+>>> # No exception raised, should proceed without errors
+
+>>> # Test 3: Test integer_validator method with invalid values
+>>> try:
+...     base_geometry_instance.integer_validator("side_length", "not_an_integer")
+... except Exception as e:
+...     str(e)
+"'side_length' must be an integer"
+
+>>> # Test 4: Test integer_validator method with invalid values (less than or equal to 0)
+>>> try:
+...     base_geometry_instance.integer_validator("side_length", 0)
+... except Exception as e:
+...     str(e)
+"'side_length' must be greater than 0"
+"""
