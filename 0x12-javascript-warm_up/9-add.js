@@ -11,5 +11,5 @@ if (isNaN(firstArg) || isNaN(secondArg)) {
   console.log('Missing arguments or invalid numbers');
 } else {
   const sum = add(firstArg, secondArg);
-  console.log(`${firstArg} + ${secondArg} = ${sum}`);
+  console.log(`${sum}`);
 }
