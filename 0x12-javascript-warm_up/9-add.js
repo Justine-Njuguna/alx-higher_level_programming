@@ -4,12 +4,4 @@ function add (a, b) {
   return a + b;
 }
 
-const firstArg = parseInt(process.argv[2]);
-const secondArg = parseInt(process.argv[3]);
-
-if (isNaN(firstArg) || isNaN(secondArg)) {
-  console.log('Missing arguments or invalid numbers');
-} else {
-  const sum = add(firstArg, secondArg);
-  console.log(`${sum}`);
-}
+console.log(add(Number(process.argv[2]), Number(process.argv[3])));
