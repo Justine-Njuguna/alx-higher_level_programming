@@ -1,25 +1,25 @@
 #!/usr/bin/node;
 
 class Rectangle {
-  constructor (w, h) {
-    if (Number.isInteger(w) && w > 0 && Number.isInteger(h) && h > 0) {
-      this.width = w;
-      this.height = h;
-    } else {
-      this.width = 0;
-      this.height = 0;
+  constructor (width, height) {
+    if (typeof width === 'number' && typeof height === 'number' && width > 0 && height > 0) {
+      this.width = width;
+      this.height = height;
     }
   }
 
   print () {
-    let output = '';
-    for (let i = 0; i < this.height; i++) {
-      for (let j = 0; j < this.width; j++) {
-        output += 'X';
+    for (let i = 0; i < this.height; ++i) {
+      let j = 0;
+
+      for (; j < this.width; ++j) {
+        process.stdout.write('X');
       }
-      output += '\n'; // Add newline after each row
+
+      if (j === this.width) {
+        console.log('');
+      }
     }
-    console.log(output);
   }
 }
 
