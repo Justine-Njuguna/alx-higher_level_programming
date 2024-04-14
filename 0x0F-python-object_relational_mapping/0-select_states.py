@@ -1,42 +1,51 @@
 #!/usr/bin/python3
-"""
-Lists all states from the database hbtn_0e_0_usa
-
-Usage: ./list_all_states.py <mysql_username> <mysql_password> <database_name>
-"""
-
 import MySQLdb
 import sys
 
+def main():
+    # Check if correct number of arguments are provided
+    if len(sys.argv) != 4:
+        print("Usage: {} <mysql_username> <mysql_password> <database_name>".format(sys.argv[0]))
+        sys.exit(1)
 
-def list_all_states(user, password, db_name):
-    """Lists all states from the database hbtn_0e_0_usa.
+    # Extract command line arguments
+    mysql_username = sys.argv[1]
+    mysql_password = sys.argv[2]
+    database_name = sys.argv[3]
 
-    Args:
-        user (str): Username for MySQL connection.
-        password (str): Password for MySQL connection.
-        db_name (str): Name of the database to connect to.
-    """
-
+    # Connect to MySQL server
     try:
         conn = MySQLdb.connect(
                 host="localhost",
                 port=3306,
-                user=user,
-                passwd=password,
-                db=db_name
+                user=mysql_username,
+                passwd=mysql_password,
+                db=database_name
                 )
-        cursor = conn.cursor()
-        cursor.execute("SELECT * FROM states ORDER BY id ASC")
-        rows = cursor.fetchall()
+        cur = conn.cursor()
 
-        for row in rows:
-            print(row[0], end="")  # Print state ID without newline
-            print(":", row[1])  # Print state name with newline
-
-        cursor.close()
-        conn.close()
-
-    except MySQLdb.Error as err:
-        print(f"Error connecting to MySQL database: {err}")
+    except MySQLdb.Error as e:
+        print("MySQL Error {}: {}".format(e.args[0], e.args[1]))
         sys.exit(1)
+
+    # Execute SQL query
+    try:
+        cur.execute("SELECT * FROM states ORDER BY id ASC")
+        
+        # Fetch and display results
+        for row in cur.fetchall():
+            print(row)
+
+    except MySQLdb.Error as e:
+        print("MySQL Error {}: {}".format(e.args[0], e.args[1]))
+        sys.exit(1)
+
+    finally:
+        # Close cursor and connection
+        if cur:
+            cur.close()
+        if conn:
+            conn.close()
+
+if __name__ == "__main__":
+    main()
