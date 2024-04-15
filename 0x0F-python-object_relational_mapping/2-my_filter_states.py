@@ -1,41 +1,32 @@
 #!/usr/bin/python3
-"""
-Lists all states matching the provided name from the database hbtn_0e_0_usa
-"""
+""" Displays in the states table where name matches the argument"""
+
 
 import sys
 import MySQLdb
 
 
 if __name__ == "__main__":
-    # No argument validation needed (as per task instructions)
-    user = sys.argv[1]
-    password = sys.argv[2]
-    db_name = sys.argv[3]
-    state_name = sys.argv[4]
+    db = MySQLdb.connect(
+        user=sys.argv[1],
+        passwd=sys.argv[2],
+        db=sys.argv[3],
+        host='localhost',
+        port=3306
+    )
+    cursor = db.cursor()
 
-    # Connect to MySQL server
-    conn = MySQLdb.connect(
-            host="localhost",
-            port=3306,
-            user=user,
-            passwd=password,
-            db=db_name
-            )
-    cursor = conn.cursor()
+    query = """
+        SELECT *
+        FROM `states`
+        WHERE BINARY `name` = '{}'
+    """.format(sys.argv[4])
 
-    # Build query with LIKE operator for wildcard search
-    query = "SELECT * FROM states WHERE name LIKE %s ORDER BY id ASC"
-    cursor.execute(query, (state_name,))
+    cursor.execute(query)
+    states = cursor.fetchall()
 
-    # Fetch and print results
-    rows = cursor.fetchall()
-    if rows:
-        for row in rows:
-            print(row[0], end="")  # Print state ID without newline
-            print(":", row[1])  # Print state name with newline
-    else:
-        print("Not found")
+    for state in states:
+        print(state)
 
-    # Close the connection
-    conn.close()
+    cursor.close()
+    db.close()
