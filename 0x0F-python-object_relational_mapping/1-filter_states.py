@@ -1,8 +1,9 @@
 #!/usr/bin/python3
-""" Task-1 lists all states beginning with N """
+""" lists all states beginning with N in ascension """
 
 import sys
 import MySQLdb
+
 
 if __name__ == "__main__":
     db = MySQLdb.connect(
@@ -10,9 +11,7 @@ if __name__ == "__main__":
             passwd=sys.argv[2],
             db=sys.argv[3],
             host="localhost",
-            port=3306,
-            charset="utf8mb4"
-            )
+            port=3306)
     cs = db.cursor()
     cs.execute("SELECT * FROM `states` WHERE name LIKE 'N%' ORDER BY id ASC")
     states = cs.fetchall()
