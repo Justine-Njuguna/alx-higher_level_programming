@@ -10,7 +10,9 @@ if __name__ == "__main__":
             passwd=sys.argv[2],
             db=sys.argv[3],
             host="localhost",
-            port=3306)
+            port=3306,
+            charset="utf8mb4"
+            )
     cs = db.cursor()
     cs.execute("SELECT * FROM `states` WHERE name LIKE 'N%' ORDER BY id ASC")
     states = cs.fetchall()
