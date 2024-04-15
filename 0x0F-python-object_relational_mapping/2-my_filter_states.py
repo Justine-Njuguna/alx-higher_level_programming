@@ -3,7 +3,6 @@
 Lists all states matching the provided name from the database hbtn_0e_0_usa
 """
 
-
 import sys
 import MySQLdb
 
