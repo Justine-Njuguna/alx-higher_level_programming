@@ -100,3 +100,14 @@ class Rectangle(Base):
                                                        self.y,
                                                        self.width,
                                                        self.height)
+
+    def update(self, *args):
+        """
+        Assigning an argument to each attribute
+        """
+        if args:
+            attributes = ["id", "width", "height", "x", "y"]
+
+            for i, attr in enumerate(attributes):
+                if i < len(args):
+                    setattr(self, attr, args[i])
