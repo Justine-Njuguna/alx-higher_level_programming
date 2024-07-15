@@ -47,7 +47,7 @@ class Rectangle(Base):
             raise ValueError("Height must be > 0")
         self.__height = value
 
-    # Property and setter for X
+    # Property and setter for x
     @property
     def x(self):
         return self.__x
@@ -56,7 +56,7 @@ class Rectangle(Base):
     def x(self, value):
         if not isinstance(value, int):
             raise TypeError("X must be an integer")
-        if value >= 0:
+        if value < 0:
             raise ValueError("X must be >= 0")
         self.__x = value
 
@@ -69,6 +69,6 @@ class Rectangle(Base):
     def y(self, value):
         if not isinstance(value, int):
             raise TypeError("Y must be an integer")
-        if value >= 0:
+        if value < 0:
             raise ValueError("Y must be >= 0")
         self.__y = value
