@@ -73,3 +73,17 @@ class Base:
         # Update attributes using **kwargs from dictionary
         dummy_instance.update(**dictionary)
         return dummy_instance
+
+    @classmethod
+    def load_from_file(cls):
+        """
+        Returns a list of instances from a JSON file
+        """
+        filename = cls.__name__ + ".json"
+        try:
+            with open(filename, 'r') as f:
+                json_data = f.read()
+                list_dicts = cls.from_json_string(json_data)
+                return [cls.create(**data) for data in list_dicts]
+        except FileNotFoundError:
+            return []
