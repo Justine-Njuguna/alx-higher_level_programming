@@ -6,6 +6,7 @@
 
 
 import json
+import csv
 
 
 class Base:
@@ -85,5 +86,48 @@ class Base:
                 json_data = f.read()
                 list_dicts = cls.from_json_string(json_data)
                 return [cls.create(**data) for data in list_dicts]
+        except FileNotFoundError:
+            return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        Serializes list_objs into a CSV file
+        """
+        filename = cls.__name__ + ".csv"
+        with open(filename, 'w', newline='') as f:
+            writer = csv.writer(f)
+            for obj in list_objs:
+                if cls.__name__ == "Rectangle":
+                    row = [obj.id, obj.width, obj.height, obj.x, obj.y]
+                elif cls.__name__ == "Square":
+                    row = [obj.id, obj.size, obj.x, obj.y]
+                else:
+                    raise ValueError("Unsupported class type")
+                writer.writerow(row)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        from models.rectangle import Rectangle
+        from models.square import Square
+        """
+        Deserializes list_objs from a CSV file
+        """
+        filename = cls.__name__ + ".csv"
+        try:
+            with open(filename, 'r', newline='') as f:
+                reader = csv.reader(f)
+                list_objs = []
+                for row in reader:
+                    if cls.__name__ == "Rectangle":
+                        id, width, height, x, y = map(int, row)
+                        obj = Rectangle(width, height, x, y, id)
+                    elif cls.__name__ == "Square":
+                        id, size, x, y = map(int, row)
+                        obj = Square(size, x, y, id)
+                    else:
+                        raise ValueError("Unsupported class type")
+                    list_objs.append(obj)
+                return list_objs
         except FileNotFoundError:
             return []
