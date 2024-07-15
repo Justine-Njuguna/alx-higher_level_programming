@@ -111,16 +111,7 @@ class Rectangle(Base):
             for i, attr in enumerate(attributes):
                 if i < len(args):
                     setattr(self, attr, args[i])
-        elif len(kwargs) > 0:
+        else:
             for key, value in kwargs.items():
-                if key == "id":
-                    self.id = value
-                elif key == "width":
-                    self.width = value
-                elif key == "height":
-                    self.height = value
-                elif key == "x":
-                    self.x = value
-                elif key == "y":
-                    self.y = value
-                break
+                if hasattr(self, key):
+                    setattr(self, key, value)
