@@ -53,3 +53,23 @@ class Base:
         if json_string is None or json_string.strip() == "":
             return []
         return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        from models.rectangle import Rectangle
+        from models.square import Square
+        """
+        Returns an instance with all attributes already set
+        """
+        if cls.__name__ == "Rectangle":
+            # Create a dummy Rectangle instance
+            dummy_instance = Rectangle(1, 1)
+        elif cls.__name__ == "Square":
+            # Create a dummy Square instance
+            dummy_instance = Square(1)
+        else:
+            raise ValueError("Unsupported class type")
+
+        # Update attributes using **kwargs from dictionary
+        dummy_instance.update(**dictionary)
+        return dummy_instance
