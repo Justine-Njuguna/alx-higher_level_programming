@@ -7,6 +7,8 @@
 
 import json
 import csv
+import turtle
+import math
 
 
 class Base:
@@ -131,3 +133,42 @@ class Base:
                 return list_objs
         except FileNotFoundError:
             return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """
+        Opens a window and draws all Rectangles and Squares using Turtle graphics
+        """
+        turtle.clearscreen()
+        screen = turtle.Screen()
+        screen.title("Rectangles and Squares")
+        screen.bgcolor("white")
+
+        t = turtle.Turtle()
+        t.speed(1)  # Adjust speed as needed
+
+        for rect in list_rectangles:
+            t.penup()
+            t.goto(rect.x, rect.y)
+            t.pendown()
+            t.color("blue")
+            t.begin_fill()
+            for _ in range(2):
+                t.forward(rect.width)
+                t.right(90)
+                t.forward(rect.height)
+                t.right(90)
+            t.end_fill()
+
+        for square in list_squares:
+            t.penup()
+            t.goto(square.x, square.y)
+            t.pendown()
+            t.color("red")
+            t.begin_fill()
+            for _ in range(4):
+                t.forward(square.size)
+                t.right(90)
+            t.end_fill()
+
+        turtle.done()
